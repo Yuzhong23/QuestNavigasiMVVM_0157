@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -40,7 +39,8 @@ fun TampilData(
         modifier = Modifier,
         topBar = {
             TopAppBar(
-                title = { Text(text = stringResource(id = R.string.tampil), color = Color.White) },
+                // Diperbaiki dari stringResource(id="Tampilan Data") yang ada di papan
+                title = { Text(text = "Tampilan Data", color = Color.White) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = colorResource(id = R.color.teal_700)
                 )
@@ -48,14 +48,12 @@ fun TampilData(
         }
     ) { isiRuang ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues = isiRuang)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(paddingValues = isiRuang),
             verticalArrangement = Arrangement.SpaceBetween
         ) {
             Column(
-                modifier = Modifier.padding(all = dimensionResource(id = R.dimen.padding_small)),
-                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+                modifier = Modifier.padding(all = 16.dp),
+                verticalArrangement = Arrangement.spacedBy(10.dp)
             ) {
                 items.forEach { item ->
                     Column {
@@ -69,6 +67,17 @@ fun TampilData(
                     }
                     HorizontalDivider(thickness = 1.dp, color = Color.Cyan)
                 }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp, vertical = 24.dp),
+                onClick = onBackBtnClick
+            ) {
+                Text(text = stringResource(id = R.string.back))
             }
         }
     }
