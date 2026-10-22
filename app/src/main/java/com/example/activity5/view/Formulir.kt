@@ -32,5 +32,17 @@ fun FormIsian(
     jenisK: List<String> = listOf("Laki-Laki", "Perempuan"),
     onSubmitBtnClick: () -> Unit = {}
 ) {
-    // Kerangka dasar disiapkan
+    Scaffold(
+        modifier = Modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(id = R.string.home), color = Color.White) },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = colorResource(id = R.color.teal_700)
+                )
+            )
+        }
+    ) { isiRuang ->
+        // Area konten
+    }
 }
